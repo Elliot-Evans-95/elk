@@ -1,0 +1,35 @@
+bs_package_flags = -bs-package-map reason-react-example
+src_root_dir = /Users/cassius/Projects/js-framework
+bsc = /Users/cassius/Projects/js-framework/node_modules/bs-platform/lib/bsc.exe
+bsdep = /Users/cassius/Projects/js-framework/node_modules/bs-platform/lib/bsb_helper.exe
+warnings = -w -30-40+6+7+27+32..39+44+45+101
+bsc_flags = -bs-suffix -nostdlib -I '/Users/cassius/Projects/js-framework/node_modules/bs-platform/lib/ocaml' -color always
+ppx_flags = 
+bs_package_includes = 
+bs_package_dev_includes = 
+namespace = -ns ReasonReactExample
+bsb_dir_group = 0
+refmt = /Users/cassius/Projects/js-framework/node_modules/bs-platform/lib/refmt.exe
+reason_react_jsx = 
+refmt_flags = --print binary
+bsc_lib_includes = -I . -I reason
+rule build_ast_and_module_sets_from_re
+  command = ${bsc} -pp "${refmt} ${refmt_flags}" ${reason_react_jsx}  ${ppx_flags} ${warnings} ${bsc_flags} -c -o ${out} -bs-syntax-only -bs-binary-ast -impl ${in}
+  description = [34mBuilding[39m [2m${out}[22m
+build reason/hello.mlast : build_ast_and_module_sets_from_re $src_root_dir/reason/hello.re
+rule build_deps
+  command = ${bsdep} ${namespace} -g ${bsb_dir_group} -MD ${in}
+  description = [34mBuilding[39m [2m${out}[22m
+build reason/hello.mlast.d : build_deps reason/hello.mlast
+rule build_cmj_cmi
+  command = ${bsc} ${bs_package_flags} -bs-assume-no-mli -bs-no-builtin-ppx-ml -bs-no-implicit-include ${bs_package_includes} ${bsc_lib_includes} ${bsc_extra_includes} ${warnings} ${bsc_flags} -o ${out} -c  ${in} $postbuild
+  depfile = ${in}.d
+  description = [34mBuilding[39m [2m${out}[22m
+build reason/hello-ReasonReactExample.cmj |  $src_root_dir/reason/hello.bs.js reason/hello-ReasonReactExample.cmi : build_cmj_cmi reason/hello.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:reason
+rule build_package
+  command = ${bsc} -w -49 -no-alias-deps -c ${in}
+  description = [34mBuilding[39m [2m${out}[22m
+build ReasonReactExample.cmi : build_package ReasonReactExample.mlmap
+build build.ninja : phony  ||  ReasonReactExample.cmi reason/hello.mlast.d

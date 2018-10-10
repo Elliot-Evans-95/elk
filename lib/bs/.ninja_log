@@ -1,0 +1,7 @@
+# ninja log v5
+1	11	1539132211	ReasonReactExample.cmi	22bf17e64008b471
+0	44	1539132211	reason/hello.mlast	95bd72ca985444a
+44	50	1539132211	reason/hello.mlast.d	45919ceefe35773f
+0	12	1539132211	reason/hello-ReasonReactExample.cmj	72dcf23b188eaa5d
+0	12	1539132211	/Users/cassius/Projects/js-framework/reason/hello.bs.js	72dcf23b188eaa5d
+0	12	1539132211	reason/hello-ReasonReactExample.cmi	72dcf23b188eaa5d
