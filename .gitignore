@@ -1,5 +1,6 @@
 node_modules/
 dist/
+lib/
 /bundledOutputs/
 
 
@@ -10,3 +11,4 @@ dist/
 DS_Store
 npm-debug.log
 .bsb.lock
+.merlin
