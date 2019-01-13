@@ -1,3 +1,5 @@
+const customPragma = 'notReact2';
+
 const presets = [
     [
         "@babel/env",
@@ -15,7 +17,7 @@ const presets = [
 
 const plugins = [
     "@babel/plugin-syntax-jsx",
-    ["@babel/plugin-transform-react-jsx", { "pragma": "notReact" }]
+    ["@babel/plugin-transform-react-jsx", { "pragma": customPragma }]
 ];
 
 module.exports = { presets, plugins };

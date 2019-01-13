@@ -4,4 +4,10 @@
 // import './testPerformance';
 
 /** TEST JSX */
-import './testJsx';
+// import './testJsx';
+
+/** TEST JSX */
+// import './fiber';
+
+/** TEST CUSTOM FIBER */
+import './elkFiber';

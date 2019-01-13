@@ -9,7 +9,7 @@ let default = (tag, attrs, children) => {
 
 	if (typeof tag \=== "function") {
 		return tag();
-	} */
+	}
 
 	let element = [%bs.raw {|document.createElement(tag)|}];
 	let fragments = [%bs.raw {|document.createDocumentFragment()|}];

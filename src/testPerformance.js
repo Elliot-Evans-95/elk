@@ -1,6 +1,6 @@
 /** @format */
 import { lap } from './helpers';
-import { elkCreateElement } from './createElement';
+import { elkCreateElement, elkCreateElement2 } from './createElement';
 
 const endRender = lap('render');
 
