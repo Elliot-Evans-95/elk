@@ -8,5 +8,13 @@
 
 ---
 TODO:  
-//  --- use memorization to increase perf ---
-// import memoize from 'fast-memoize';
+- use memorization to increase perf
+- import memoize from 'fast-memoize';
+- Add priority into consideration
+- Use decorators to determine what component is root etc
+
+
+NOTE:::
+composite-design-pattern
+Iterator behavior design pattern
+Tree Design Pattern

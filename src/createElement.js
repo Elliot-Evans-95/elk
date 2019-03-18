@@ -248,7 +248,7 @@ function render(elements, containerDom) {
 	updateQueue.push({
 		from: HOST_ROOT,
 		dom: containerDom,
-		newProps: { children: elements }
+		props: { children: elements }
 	});
 	requestIdleCallback(performWork);
 }

@@ -75,7 +75,7 @@ const resetNextUnitOfWork = () => {
     nextUnitOfWork = {
         tag: HOST_ROOT,
         stateNode: update.dom || root.stateNode,
-        props: update.newProps || root.props,
+        props: update.props || root.props,
         alternate: root
     };
 };
@@ -364,7 +364,7 @@ export const renderElk = (elements, containerDom) => {
     updateQueue.push({
         from: HOST_ROOT,
         dom: containerDom,
-        newProps: { children: elements }
+        props: { children: elements }
     });
 
     requestIdleCallback(performWork);
