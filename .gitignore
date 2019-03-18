@@ -10,5 +10,5 @@ lib/
 
 DS_Store
 npm-debug.log
-.bsb.lock
-.merlin
+yarn-debug.log
+.cache/
