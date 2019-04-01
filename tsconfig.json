@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "jsxFactory": "elk"
+    "jsxFactory": "elk",
+    "lib": ["dom", "es7"]
   }
 }
