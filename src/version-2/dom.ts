@@ -14,13 +14,22 @@ export const elk = (element: any, attrs: any, ...children: Array<string>) => {
             break;
     }
 
+    console.log(currentInstance);
+
+    if(element.name)
+        currentInstance.setAttribute('data-name', element.name);
+
     rootInstance = currentInstance;
 
     return rootInstance;
 };
 
 const functionType = (element: any, attrs: any, children: Array<string>) => {
-    console.log('functions children: ', children);
+    if(attrs === null || attrs === undefined)
+        attrs = {};
+
+    if(children === null || children === undefined)
+        children = [];
 
     const attrsArray = Object
         .keys(attrs)
@@ -46,9 +55,11 @@ const stringType = (element: any, attrs: Array<any> = [], children: Array<string
     Object.keys(attrs).map(key => {
         const hoistedValue = attrs[key];
 
-        if (key === "className") {
-            key = 'class';
-            attrs[key] = hoistedValue;
+        if(typeof hoistedValue === 'function') {
+
+            if(key === 'click')
+                dom.addEventListener('click',  (e) => hoistedValue(e));
+
         }
 
         dom.setAttribute(key, attrs[key])
